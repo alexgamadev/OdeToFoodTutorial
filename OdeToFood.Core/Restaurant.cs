@@ -4,7 +4,11 @@ using System.Text;
 
 namespace OdeToFood.Core
 {
-    class Restaurant
+    public partial class Restaurant
     {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Location { get; set; }
+        public CuisineType Cuisine { get; set; }
     }
 }
