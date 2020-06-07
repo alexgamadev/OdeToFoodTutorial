@@ -1,10 +1,20 @@
-﻿@page "{restaurantId:int}"
+﻿@page "{restaurantId:int?}"
 @model OdeToFood.Pages.Restaurants.EditModel
 @{
     ViewData["Title"] = "Edit";
 }
 
-<h1>Editing @Model.Restaurant.Name</h1>
+
+@if (Model.Restaurant.Id > 0)
+{
+    <h1>Editing @Model.Restaurant.Name</h1>
+}
+else
+{
+    <h1>Create New Restaurant</h1>
+}
+
+
 
 <form method="post">
     <input type="hidden" asp-for="Restaurant.Id" />
@@ -24,6 +34,14 @@
         </select>
         <span class="text-danger" asp-validation-for="Restaurant.Cuisine"></span>
     </div>
-    <button type="submit" class="btn btn-success">Save</button>
+    @if (Model.Restaurant.Id > 0)
+    {
+        <button type="submit" class="btn btn-success">Save</button>
+    }
+    else
+    {
+        <button type="submit" class="btn btn-success">Create</button>
+    }
+    
 </form>
 
