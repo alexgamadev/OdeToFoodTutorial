@@ -33,6 +33,13 @@
             <td>@restaurant.Name</td>
             <td>@restaurant.Location</td>
             <td>@restaurant.Cuisine</td>
+            <td>
+                <a 
+                   asp-page="./Details" 
+                   asp-route-restaurantId="@restaurant.Id" 
+                   class="btn btn-primary">Details
+                </a>
+            </td>
         </tr>
     }
 </table>
