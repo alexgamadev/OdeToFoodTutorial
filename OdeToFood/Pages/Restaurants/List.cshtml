@@ -5,11 +5,10 @@
 }
 
 <h1>Restaurants</h1>
-
 <form method="get">
     <div class="form-group">
         <div class="input-group">
-            <input type="search" class="form-control" asp-for="SearchTerm" />
+            <input type="search" class="form-control" placeholder="Search" asp-for="SearchTerm" />
             <span>
                 <button class="btn btn-outline-secondary">
                     <i class="fas fa-search"></i>
@@ -19,7 +18,8 @@
     </div>
 </form>
 
-<table class="table">
+<!--Render restaurants using table view-->
+<!--<table class="table">
     <thead>
         <tr>
             <th>Name</th>
@@ -44,11 +44,33 @@
                    class="btn btn-success">
                     Edit
                 </a>
+                <a asp-page="./Delete"
+                   asp-route-restaurantId="@restaurant.Id"
+                   class="btn btn-danger">
+                    Delete
+                </a>
             </td>
         </tr>
     }
-</table>
+</table>-->
+
+<!--Render restaurants using partial views-->
+@foreach (var restaurant in Model.Restaurants)
+{
+    <partial name="_Summary" model="restaurant" />
+    <br />
+}
+
+
+
+@if (Model.Message != null)
+{
+    <div class="alert alert-success">@Model.Message</div>
+}
 
 <a asp-page="./Edit" class="btn btn-success">Add New Restaurant</a>
 
-<div>@Model.Message</div>
+@section footer
+{
+    @Model.ConfigMessage
+}

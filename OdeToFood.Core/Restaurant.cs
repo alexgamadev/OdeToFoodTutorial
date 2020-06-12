@@ -13,7 +13,7 @@ namespace OdeToFood.Core
         [Required, StringLength(50, MinimumLength = 6)]
         public string Name { get; set; }
 
-        [Required, StringLength(50, MinimumLength = 6)]
+        [Required, StringLength(50, MinimumLength = 3)]
         public string Location { get; set; }
 
         public CuisineType Cuisine { get; set; }
