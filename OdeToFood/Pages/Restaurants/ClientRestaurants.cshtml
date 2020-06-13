@@ -6,6 +6,16 @@
 
 <h1>ClientRestaurants</h1>
 
+<table class="table" id="restaurants">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Location</th>
+            <th>Cuisine</th>
+        </tr>
+    </thead>
+</table>
+
 @section Scripts
 {
     <environment include="Development">
@@ -18,10 +28,24 @@
     </environment>
 
     <script>
+        var cuisines = ["Unknown", "Mexican", "Italian", "Chinese", "Indian"]
         $(function () {
             $.ajax("/api/restaurants/", { method: "get" })
                 .then(function (response) {
                     console.dir(response);
+
+                    $("#restaurants").dataTable({
+                        data: response,
+                        columns: [
+                            { "data": "name" },
+                            { "data": "location" },
+                            {
+                                "data": "cuisine", "render": function (data) {
+                                    return cuisines[data];
+                                }
+                            }
+                        ]
+                    });
                 });
         });
     </script>
