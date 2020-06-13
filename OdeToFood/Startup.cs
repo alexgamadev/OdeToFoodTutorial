@@ -30,6 +30,7 @@ namespace OdeToFood
                 b => b.MigrationsAssembly("OdeToFood"))
             );
             services.AddScoped<IRestaurantData, SqlRestaurantData>();
+            services.AddControllers();
             services.AddRazorPages();
         }
 
@@ -57,6 +58,7 @@ namespace OdeToFood
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
+                endpoints.MapControllers();
             });
         }
     }
