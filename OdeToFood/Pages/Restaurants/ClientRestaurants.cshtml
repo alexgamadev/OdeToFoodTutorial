@@ -4,7 +4,7 @@
     ViewData["Title"] = "ClientRestaurants";
 }
 
-<h1>ClientRestaurants</h1>
+    <h1>Restaurants (<a href="https://datatables.net/">Using DataTables</a>)</h1>
 
 <table class="table" id="restaurants">
     <thead>
@@ -12,6 +12,7 @@
             <th>Name</th>
             <th>Location</th>
             <th>Cuisine</th>
+            <th></th>
         </tr>
     </thead>
 </table>
@@ -43,11 +44,30 @@
                                 "data": "cuisine", "render": function (data) {
                                     return cuisines[data];
                                 }
+                            },
+                            {
+                            "data": "id",
+                            "render": function (data) {
+                                return `<div class = "text-center"> 
+                                            <a href="/restaurants/details/${data}"
+                                                class="btn btn-primary text-white">
+                                                Details
+                                            </a>
+                                            <a href="/restaurants/edit/${data}"
+                                                class="btn btn-success text-white">
+                                                Edit
+                                            </a>
+                                            <a href="/restaurants/delete/${data}"
+                                                class="btn btn-danger text-white">
+                                                Delete
+                                            </a>
+                                        </div>`;
+                                }
                             }
-                        ]
+                            ]
+                        });
                     });
-                });
-        });
+            });
     </script>
 }
 
